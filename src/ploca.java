@@ -1,32 +1,27 @@
+import javax.swing.*;
+import java.awt.*;
 
-public abstract class ploca {
+public class ploca extends JPanel {
 
-    int kordinata;
+    public int velicina = 70;
 
-    ploca(int kordinata){
-        this.kordinata = kordinata;
+    int redovi = 8;
+    int stupci = 8;
+
+    public ploca() {
+        this.setPreferredSize(new Dimension(redovi * velicina, stupci * velicina));
     }
 
-    public abstract boolean jeZauzeto();
 
-    public abstract figura koFigura();
+    public void paintComponent(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
 
-    public static final class praznaPloca extends ploca{
+        for (int r = 0; r < redovi; r++) {
+            for (int s = 0; s < stupci; s++) {
+                g2d.setColor((s + r) % 2 == 0 ? Color.black : Color.white);
+                g2d.fillRect(s * velicina, r * velicina, velicina, velicina);
+            }
 
-        praznaPloca(int mjesto){
-            super(mjesto);
         }
-
-        @Override
-        public boolean jeZauzeto(){
-            return false;
-        }
-
-        @Override
-        public figura koFigura(){
-            return null;
-        }
-
     }
-
 }
