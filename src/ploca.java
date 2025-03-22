@@ -18,7 +18,7 @@ public class ploca extends JPanel {
 
         for (int r = 0; r < redovi; r++) {
             for (int s = 0; s < stupci; s++) {
-                g2d.setColor((s + r) % 2 == 0 ? Color.black : Color.white);
+                g2d.setColor((s + r) % 2 == 0 ? new Color(58, 43, 4) : new Color(199, 183, 149));
                 g2d.fillRect(s * velicina, r * velicina, velicina, velicina);
             }
 
