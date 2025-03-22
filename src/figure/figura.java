@@ -17,6 +17,8 @@ public class figura {
     public int vrijednost;
 
     BufferedImage sheet;
+
+
     {
         try{
             sheet = ImageIO.read(ClassLoader.getSystemResourceAsStream("figurice.png"));
@@ -33,16 +35,14 @@ public class figura {
     public figura(ploca ploca) {
     }
 
+
     public void figura(ploca ploca) {
         this.ploca = ploca;
     }
 
-    public void print(Graphics2D g2d){
+    public void paint(Graphics2D g2d){
 
         g2d.drawImage(sprite,x,y,null);
 
-    }
-
-    public void paint(Graphics2D g2d) {
     }
 }

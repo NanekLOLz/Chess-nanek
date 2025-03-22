@@ -18,10 +18,11 @@ public class ploca extends JPanel {
 
     public ploca() {
         this.setPreferredSize(new Dimension(redovi * velicina, stupci * velicina));
+        addPieces();
     }
 
-    public void addPieces(){
-        pieceList.add(new konj(this,0,2,true));
+    public void addPieces() {
+        pieceList.add(new konj(this, 0, 2, false));
     }
 
 
@@ -30,16 +31,14 @@ public class ploca extends JPanel {
 
         for (int r = 0; r < redovi; r++) {
             for (int s = 0; s < stupci; s++) {
-                g2d.setColor((s + r) % 2 == 0 ? new Color(168, 150, 119): new Color(58, 43, 4) );
+                g2d.setColor((s + r) % 2 == 0 ? new Color(168, 150, 119) : new Color(58, 43, 4));
                 g2d.fillRect(s * velicina, r * velicina, velicina, velicina);
             }
 
         }
 
-        for(figura figura : pieceList){
+        for (figura figura : pieceList) {
             figura.paint(g2d);
         }
-
-
     }
 }
