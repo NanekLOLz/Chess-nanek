@@ -15,6 +15,8 @@ public class figura {
     public boolean isWhite;
     public String ime;
     public int vrijednost;
+    public Object xPos;
+    public int yPos;
 
     BufferedImage sheet;
 

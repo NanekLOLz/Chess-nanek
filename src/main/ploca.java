@@ -17,9 +17,16 @@ public class ploca extends JPanel {
 
     public figura selectedPiece;
 
+    Input input = new Input(this);
+
     public ploca() {
         this.setPreferredSize(new Dimension(redovi * velicina, stupci * velicina));
+
+        this.addMouseListener(input);
+        this.addMouseMotionListener(input);
+
         addPieces();
+
     }
 
     public figura getFigura(int red,int stupac){
@@ -32,6 +39,37 @@ public class ploca extends JPanel {
         return null;
     }
 
+    public void makeMove(Move move){
+
+        move.figura.stupac = move.newst;
+        move.figura.red = move.newrd;
+
+        move.figura.xPos = move.newst * velicina;
+        move.figura.yPos = move.newrd * velicina;
+
+        capture(move);
+    }
+
+    public void capture(Move move){
+        pieceList.remove(move.capture);
+    }
+
+    public boolean isValidMove(Move move){
+
+        if(sameTeam(move.figura, move.capture)){
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean sameTeam(figura p1,figura p2){
+        if(p1 == null || p2 == null){
+            return false;
+        }
+        return p1.isWhite == p2.isWhite;
+    }
+
     public void addPieces() {
         pieceList.add(new konj(this, 0, 1, false));
         pieceList.add(new konj(this, 0, 6, false));
@@ -41,9 +79,15 @@ public class ploca extends JPanel {
         pieceList.add(new Kula(this, 0, 7, false));
         pieceList.add(new Lovac(this, 0, 2, false));
         pieceList.add(new Lovac(this, 0, 5, false));
-        for (int i = 0; i<stupci; i++){
-            pieceList.add(new Pijun(this, 1, i, false));
-        }
+
+        pieceList.add(new Pijun(this, 1, 0, false));
+        pieceList.add(new Pijun(this, 1, 1, false));
+        pieceList.add(new Pijun(this, 1, 2, false));
+        pieceList.add(new Pijun(this, 1, 3, false));
+        pieceList.add(new Pijun(this, 1, 4, false));
+        pieceList.add(new Pijun(this, 1, 5, false));
+        pieceList.add(new Pijun(this, 1, 6, false));
+        pieceList.add(new Pijun(this, 1, 7, false));
 
         pieceList.add(new konj(this, 7, 1, true));
         pieceList.add(new konj(this, 7, 6, true));
@@ -53,9 +97,16 @@ public class ploca extends JPanel {
         pieceList.add(new Kula(this, 7, 7, true));
         pieceList.add(new Lovac(this, 7, 2, true));
         pieceList.add(new Lovac(this, 7, 5, true));
-        for (int j = 0; j<stupci; j++){
-            pieceList.add(new Pijun(this, 6, j, true));
-        }
+
+        pieceList.add(new Pijun(this, 6, 0, true));
+        pieceList.add(new Pijun(this, 6, 1, true));
+        pieceList.add(new Pijun(this, 6, 2, true));
+        pieceList.add(new Pijun(this, 6, 3, true));
+        pieceList.add(new Pijun(this, 6, 4, true));
+        pieceList.add(new Pijun(this, 6, 5, true));
+        pieceList.add(new Pijun(this, 6, 6, true));
+        pieceList.add(new Pijun(this, 6, 7, true));
+
     }
 
 
