@@ -18,10 +18,6 @@ public class figura {
     public Object xPos;
     public int yPos;
 
-    BufferedImage sheet;
-
-
-
 
     Image sprite;
 

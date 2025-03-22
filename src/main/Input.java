@@ -57,10 +57,11 @@ public class Input extends MouseAdapter {
                 ploca.selectedPiece.yPos = ploca.selectedPiece.red * ploca.velicina;
             }
 
+
         }
+
         ploca.selectedPiece = null;
         ploca.repaint();
-
     }
 
 }
