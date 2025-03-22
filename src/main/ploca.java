@@ -1,7 +1,11 @@
 package main;
 
+import figure.figura;
+import figure.konj;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ploca extends JPanel {
 
@@ -10,8 +14,14 @@ public class ploca extends JPanel {
     int redovi = 8;
     int stupci = 8;
 
+    ArrayList<figura> pieceList = new ArrayList<>();
+
     public ploca() {
         this.setPreferredSize(new Dimension(redovi * velicina, stupci * velicina));
+    }
+
+    public void addPieces(){
+        pieceList.add(new konj(this,0,2,true));
     }
 
 
@@ -24,6 +34,10 @@ public class ploca extends JPanel {
                 g2d.fillRect(s * velicina, r * velicina, velicina, velicina);
             }
 
+        }
+
+        for(figura figura : pieceList){
+            figura.paint(g2d);
         }
 
 
