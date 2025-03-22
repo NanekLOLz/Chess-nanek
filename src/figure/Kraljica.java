@@ -7,9 +7,9 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class konj extends figura {
+public class Kraljica extends figura {
 
-    public konj(ploca ploca, int red, int stupac, boolean isWhite) {
+    public Kraljica(ploca ploca, int red, int stupac, boolean isWhite) {
         super(ploca);
         this.red = red;
         this.stupac = stupac;
@@ -17,23 +17,24 @@ public class konj extends figura {
         this.y = red * ploca.velicina;
 
         this.isWhite = isWhite;
-        this.ime = "konj";
+        this.ime = "kraljica";
 
         if (isWhite) {
             try {
-                this.sprite = ImageIO.read(ClassLoader.getSystemResourceAsStream("knight_w.png"));
+                this.sprite = ImageIO.read(ClassLoader.getSystemResourceAsStream("queen_w.png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         } else {
             try {
-                this.sprite = ImageIO.read(ClassLoader.getSystemResourceAsStream("knight_b.png"));
+                this.sprite = ImageIO.read(ClassLoader.getSystemResourceAsStream("queen_b.png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 }
+
 
 

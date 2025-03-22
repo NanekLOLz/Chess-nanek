@@ -19,14 +19,7 @@ public class figura {
     BufferedImage sheet;
 
 
-    {
-        try{
-            sheet = ImageIO.read(ClassLoader.getSystemResourceAsStream("figurice.png"));
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-    protected int sheetScale = sheet.getWidth() / 6;
+
 
     Image sprite;
 
