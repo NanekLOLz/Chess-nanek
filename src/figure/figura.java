@@ -2,38 +2,33 @@ package figure;
 
 import main.ploca;
 
-import javax.imageio.ImageIO;
+
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 public class figura {
 
-    public int red,stupac;
+    public int row, column;
     public int x,y;
 
-    public boolean isWhite;
-    public String ime;
-    public int vrijednost;
-    public Object xPos;
-    public int yPos;
+    public boolean isWhite;//checks team
+    public String name;//gets the name
+    public int vrijednost;//value of pieces(currently not used)
+    public int xPos;//x position of piece
+    public int yPos;//y position of piece
 
 
     Image sprite;
 
     ploca ploca;
 
+
     public figura(ploca ploca) {
-    }
-
-
-    public void figura(ploca ploca) {
         this.ploca = ploca;
     }
 
     public void paint(Graphics2D g2d){
 
-        g2d.drawImage(sprite,x,y,null);
+        g2d.drawImage(sprite, x,y,null);
 
     }
 }

@@ -4,20 +4,19 @@ package figure;
 import main.ploca;
 
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class konj extends figura {
 
     public konj(ploca ploca, int red, int stupac, boolean isWhite) {
         super(ploca);
-        this.red = red;
-        this.stupac = stupac;
-        this.x = stupac * ploca.velicina;
-        this.y = red * ploca.velicina;
+        this.row = red;
+        this.column = stupac;
+        this.xPos = stupac * ploca.velicina;
+        this.yPos = red * ploca.velicina;
 
         this.isWhite = isWhite;
-        this.ime = "konj";
+        this.name = "konj";//knight
 
         if (isWhite) {
             try {

@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class ploca extends JPanel {
 
-    public int velicina = 70;
+    public int velicina = 70;//sets the size of a tile
 
-    int redovi = 8;
-    int stupci = 8;
+    int rows = 8;//sets the amount of rows
+    int columns = 8;//sets the amount of columns
 
     ArrayList<figura> pieceList = new ArrayList<>();
 
@@ -20,7 +20,7 @@ public class ploca extends JPanel {
     Input input = new Input(this);
 
     public ploca() {
-        this.setPreferredSize(new Dimension(redovi * velicina, stupci * velicina));
+        this.setPreferredSize(new Dimension(rows * velicina, columns * velicina));
 
         this.addMouseListener(input);
         this.addMouseMotionListener(input);
@@ -29,10 +29,10 @@ public class ploca extends JPanel {
 
     }
 
-    public figura getFigura(int red,int stupac){
+    public figura getFigura(int red,int stupac){//gets the selected piece
 
         for(figura figura : pieceList){
-            if((figura.stupac == stupac) && (figura.red == red)) {
+            if((figura.column == stupac) && (figura.row == red)) {
                 return figura;
             }
         }
@@ -41,8 +41,8 @@ public class ploca extends JPanel {
 
     public void makeMove(Move move){
 
-        move.figura.stupac = move.newst;
-        move.figura.red = move.newrd;
+        move.figura.column = move.newst;
+        move.figura.row = move.newrd;
 
         move.figura.xPos = move.newst * velicina;
         move.figura.yPos = move.newrd * velicina;
@@ -56,21 +56,21 @@ public class ploca extends JPanel {
 
     public boolean isValidMove(Move move){
 
-        if(sameTeam(move.figura, move.capture)){
+        if(sameTeam(move.figura, move.capture)){//if a piece tries to eat a piece on the same team it doesnt allow it
             return false;
         }
 
         return true;
     }
 
-    public boolean sameTeam(figura p1,figura p2){
+    public boolean sameTeam(figura p1,figura p2){//checks the team
         if(p1 == null || p2 == null){
             return false;
         }
         return p1.isWhite == p2.isWhite;
     }
 
-    public void addPieces() {
+    public void addPieces() {//sets the pieces on their places at the begining
         pieceList.add(new konj(this, 0, 1, false));
         pieceList.add(new konj(this, 0, 6, false));
         pieceList.add(new Kralj(this, 0, 4, false));
@@ -110,11 +110,11 @@ public class ploca extends JPanel {
     }
 
 
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {//paints the board checkered
         Graphics2D g2d = (Graphics2D) g;
 
-        for (int r = 0; r < redovi; r++) {
-            for (int s = 0; s < stupci; s++) {
+        for (int r = 0; r < rows; r++) {
+            for (int s = 0; s < columns; s++) {
                 g2d.setColor((s + r) % 2 == 0 ? new Color(168, 150, 119) : new Color(58, 43, 4));
                 g2d.fillRect(s * velicina, r * velicina, velicina, velicina);
             }
