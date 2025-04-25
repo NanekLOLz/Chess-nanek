@@ -8,29 +8,19 @@ import java.io.IOException;
 
 public class Kraljica extends figura {
 
-    public Kraljica(ploca ploca, int red, int stupac, boolean isWhite) {
-        super(ploca);
-        this.row = red;
-        this.column = stupac;
-        this.x = stupac * ploca.velicina;
-        this.y = red * ploca.velicina;
+    public Kraljica(ploca ploca, int row, int column, boolean isWhite) {
+        super(ploca, row, column, isWhite);
 
-        this.isWhite = isWhite;
-        this.name = "kraljica";//queen
+        this.name = "queen";
 
-        if (isWhite) {
-            try {
+        try {
+            if (isWhite) {
                 this.sprite = ImageIO.read(ClassLoader.getSystemResourceAsStream("queen_w.png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        } else {
-            try {
+            } else {
                 this.sprite = ImageIO.read(ClassLoader.getSystemResourceAsStream("queen_b.png"));
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

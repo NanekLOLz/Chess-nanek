@@ -50,13 +50,13 @@ public class ploca extends JPanel {
         capture(move);
     }
 
-    public void capture(Move move){
+    public void capture(Move move)  {
         pieceList.remove(move.capture);
     }
 
     public boolean isValidMove(Move move){
 
-        if(sameTeam(move.figura, move.capture)){//if a piece tries to eat a piece on the same team it doesnt allow it
+        if(sameTeam(move.figura, move.capture)){//if a piece tries to eat a piece on the same team it doesn't allow it
             return false;
         }
 
@@ -71,8 +71,8 @@ public class ploca extends JPanel {
     }
 
     public void addPieces() {//sets the pieces on their places at the begining
-        pieceList.add(new konj(this, 0, 1, false));
-        pieceList.add(new konj(this, 0, 6, false));
+        pieceList.add(new Konj(this, 0, 1, false));
+        pieceList.add(new Konj(this, 0, 6, false));
         pieceList.add(new Kralj(this, 0, 4, false));
         pieceList.add(new Kraljica(this, 0, 3, false));
         pieceList.add(new Kula(this, 0, 0, false));
@@ -89,8 +89,8 @@ public class ploca extends JPanel {
         pieceList.add(new Pijun(this, 1, 6, false));
         pieceList.add(new Pijun(this, 1, 7, false));
 
-        pieceList.add(new konj(this, 7, 1, true));
-        pieceList.add(new konj(this, 7, 6, true));
+        pieceList.add(new Konj(this, 7, 1, true));
+        pieceList.add(new Konj(this, 7, 6, true));
         pieceList.add(new Kralj(this, 7, 4, true));
         pieceList.add(new Kraljica(this, 7, 3, true));
         pieceList.add(new Kula(this, 7, 0, true));
@@ -124,5 +124,6 @@ public class ploca extends JPanel {
         for (figura figura : pieceList) {
             figura.paint(g2d);
         }
+
     }
 }
