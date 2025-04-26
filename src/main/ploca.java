@@ -56,6 +56,10 @@ public class ploca extends JPanel {
 
     public boolean isValidMove(Move move) {
 
+        if(move.newrd > 7 || move.newrd < 0 || move.newst > 7 || move.newst < 0){
+            return false;
+        }
+
         if (sameTeam(move.figura, move.capture)) {//if a piece tries to eat a piece on the same team it doesn't allow it
             return false;
         }

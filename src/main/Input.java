@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 public class Input extends MouseAdapter {
 
+    boolean whiteTurn = true;
     ploca ploca;
 
     public Input(ploca ploca){
@@ -16,11 +17,17 @@ public class Input extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {//gets the x and y positions of the mouse when pressed
 
+
+
+
         int column = e.getX() / ploca.velicina;
         int row = e.getY() / ploca.velicina;
 
         figura figuraXY = ploca.getFigura(row, column);
         if(figuraXY != null){
+            if(figuraXY.isWhite != whiteTurn) {
+                return;
+            }
             ploca.selectedPiece = figuraXY;
         }
 
@@ -50,6 +57,7 @@ public class Input extends MouseAdapter {
 
             if(ploca.isValidMove(move)) {
                 ploca.makeMove(move);
+                whiteTurn = !whiteTurn;
             }else{
                 ploca.selectedPiece.xPos = ploca.selectedPiece.column * ploca.velicina;
                 ploca.selectedPiece.yPos = ploca.selectedPiece.row * ploca.velicina;
