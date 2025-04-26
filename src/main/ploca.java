@@ -29,17 +29,17 @@ public class ploca extends JPanel {
 
     }
 
-    public figura getFigura(int red,int stupac){//gets the selected piece
+    public figura getFigura(int red, int stupac) {//gets the selected piece
 
-        for(figura figura : pieceList){
-            if((figura.column == stupac) && (figura.row == red)) {
+        for (figura figura : pieceList) {
+            if ((figura.column == stupac) && (figura.row == red)) {
                 return figura;
             }
         }
         return null;
     }
 
-    public void makeMove(Move move){
+    public void makeMove(Move move) {
 
         move.figura.column = move.newst;
         move.figura.row = move.newrd;
@@ -50,21 +50,24 @@ public class ploca extends JPanel {
         capture(move);
     }
 
-    public void capture(Move move)  {
+    public void capture(Move move) {
         pieceList.remove(move.capture);
     }
 
-    public boolean isValidMove(Move move){
+    public boolean isValidMove(Move move) {
 
-        if(sameTeam(move.figura, move.capture)){//if a piece tries to eat a piece on the same team it doesn't allow it
+        if (sameTeam(move.figura, move.capture)) {//if a piece tries to eat a piece on the same team it doesn't allow it
             return false;
         }
 
-        return true;
+        return move.figura.canMove(move);
     }
 
-    public boolean sameTeam(figura p1,figura p2){//checks the team
-        if(p1 == null || p2 == null){
+
+
+
+    public boolean sameTeam(figura p1, figura p2) {//checks the team
+        if (p1 == null || p2 == null) {
             return false;
         }
         return p1.isWhite == p2.isWhite;
@@ -121,9 +124,30 @@ public class ploca extends JPanel {
 
         }
 
-        for (figura figura : pieceList) {
-            figura.paint(g2d);
+        if(selectedPiece != null) {
+            for (int r = 0; r < rows; r++) {
+                for (int s = 0; s < columns; s++) {
+
+                    if (isValidMove(new Move(this, selectedPiece, s, r))) {
+                        if((s+r)%2==0){
+                            g2d.setColor(new Color(70, 176, 57));
+                        } else {
+                            g2d.setColor(new Color(45, 110, 38));
+                        }
+                        g2d.fillRect(r * velicina, s * velicina, velicina, velicina);
+
+                    }
+
+                }
+            }
         }
 
+
+            for (figura figura : pieceList) {
+                figura.paint(g2d);
+            }
+
+
+        }
     }
-}
+

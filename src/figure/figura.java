@@ -1,5 +1,6 @@
 package figure;
 
+import main.Move;
 import main.ploca;
 
 
@@ -36,4 +37,28 @@ public class figura {
         g2d.drawImage(sprite, xPos,yPos,null);
 
     }
+
+    public boolean canMove(Move move) {
+        return true;
+    }
+
+
+    public boolean isPathClear(Move move){
+        int rowDir = Integer.compare(move.newrd, move.figura.row);
+        int colDir = Integer.compare(move.newst, move.figura.column);
+
+        int cCol = move.figura.column + colDir;
+        int cRow = move.figura.row + rowDir;
+
+        while(cCol != move.newst || cRow != move.newrd) {
+            if(ploca.getFigura(cRow,cCol) != null ){
+                return false;
+            }
+            cRow += rowDir;
+            cCol += colDir;
+        }
+        return true;
+
+    }
+
 }

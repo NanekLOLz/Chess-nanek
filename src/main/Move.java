@@ -7,11 +7,11 @@ public class Move {
     int oldst;
     int oldrd;
 
-    int newst;
-    int newrd;
+    public int newst;
+    public int newrd;
 
-    figura figura;
-    figura capture;
+    public figura figura;
+    public figura capture;
 
     public Move(ploca ploca, figura figura, int newrd, int newst){
 

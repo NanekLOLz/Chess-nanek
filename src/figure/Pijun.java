@@ -1,6 +1,8 @@
 package figure;
 
 
+import main.Main;
+import main.Move;
 import main.ploca;
 
 import javax.imageio.ImageIO;
@@ -23,6 +25,27 @@ public class Pijun extends figura {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public boolean canMove(Move move){
+        int dir = isWhite ? -1 : 1;
+        int dx = move.newst - move.figura.column; // horizontal movement
+        int dy = move.newrd - move.figura.row;
+
+
+        if (dx == 0 && dy == dir && move.capture == null) {
+            return true;
+        }
+        if (dx == 0 && dy == 2 * dir && move.capture == null && ((isWhite && move.figura.row == 6) || (!isWhite && move.figura.row == 1))) {
+            return true;
+        }
+        if (Math.abs(dx) == 1 && dy == dir && move.capture != null) {
+            return true;
+        }
+
+        return false;
+    }
+
 }
 
 

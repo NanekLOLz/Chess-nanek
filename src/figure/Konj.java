@@ -1,6 +1,7 @@
 package figure;
 
 
+import main.Move;
 import main.ploca;
 
 import javax.imageio.ImageIO;
@@ -23,6 +24,15 @@ public class Konj extends figura {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public boolean canMove(Move move) {
+        int dx = Math.abs(move.newst - move.figura.column);
+        int dy = Math.abs(move.newrd - move.figura.row);
+
+        return (dx == 2 && dy == 1 ||dx == 1 && dy == 2);
+    }
+
 }
 
 

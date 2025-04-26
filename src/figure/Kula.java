@@ -1,6 +1,7 @@
 package figure;
 
 
+import main.Move;
 import main.ploca;
 
 import javax.imageio.ImageIO;
@@ -22,6 +23,20 @@ public class Kula extends figura {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @Override
+    public boolean canMove(Move move){
+        int dx = Math.abs(move.newst - move.figura.column);
+        int dy = Math.abs(move.newrd - move.figura.row);
+
+        if(dx == 0 || dy == 0){
+            if (!isPathClear(move)) {
+                return false;
+            }
+            return true;
+        }
+
+        return false;
     }
 }
 
